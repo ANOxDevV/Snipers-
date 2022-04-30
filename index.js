@@ -3,6 +3,7 @@ const Discord = require('discord.js-selfbot-v13');
 const client = new Discord.Client();
 
 const config = require('./config.js');
+const logger = require('./util/logger.js');
 
 // Load all commands in './cmds'
 const cmdFiles = fs.readdirSync('./cmds').filter(file => file.endsWith('.js'));
@@ -16,7 +17,7 @@ for (const file of cmdFiles) {
 const nitro = require('./src/nitro.js');
 
 client.on('ready', async () => {
-    console.log(`${client.user.username} is ready!`);
+    logger.log(`Logged in as ${ logger.green(`${client.user.tag}`) }`);
 });
 
 client.on('messageCreate', async (msg) => {
