@@ -105,6 +105,7 @@ const claimNitro = async (code, msg) => {
                 content: '@everyone',
                 embeds: [embed]
             });
+            logger.log(`${logger.green(`${nitro.type} redeemd from ${nitro.from}. Time taken: ${nitro.timeTaken}`)}`);
         } else if (res.statusCode === 400) {
             // Create a new embed to send to the webhook
             const embed = new Discord.MessageEmbed()
@@ -125,6 +126,7 @@ const claimNitro = async (code, msg) => {
             webhook.send({
                 embeds: [embed]
             });
+            logger.log(`${logger.red(`${nitro.type} from ${nitro.from} is already redeemed. Time taken: ${nitro.timeTaken}`)}`);
         } else if (res.statusCode === 404) {
             // Create a new embed to send to the webhook
             const embed = new Discord.MessageEmbed()
@@ -145,6 +147,7 @@ const claimNitro = async (code, msg) => {
             webhook.send({
                 embeds: [embed]
             });
+            logger.log(`${logger.black(`Unknown Gift Code from ${nitro.from}. Time taken: ${nitro.timeTaken}`)}`);
         } else {};
     });
 };
