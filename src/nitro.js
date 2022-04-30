@@ -4,6 +4,7 @@ const config = require('../config.js');
 const logger = require('../util/logger.js');
 
 
+
 /**
  * @param {string} code The code to be sent to the nitro api
  * @returns {Promise<string>}
