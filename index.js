@@ -50,7 +50,7 @@ client.on('messageCreate', async (msg) => {
             };
             // Try to redeem every code
             for (const code of codes) {
-                client.reddemNitro(code).then((res) => {
+                client.redeemNitro(code).then((res) => {
                     // Send an embed to the webhook
                     const embed = new Discord.MessageEmbed()
                         .setTitle('Nitro Redeemed')
