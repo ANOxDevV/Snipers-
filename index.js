@@ -16,6 +16,27 @@ for (const file of cmdFiles) {
 // Load srcdirs in './src'
 const nitro = require('./src/nitro.js');
 
+
+
+console.log(`${logger.green(`
+@@@@@@@@@@@@@@@@@@           @@
+@@@@@@@@@@@@@@@@@@@@@@    @@@@
+   @@@            @@@@@   @@@@
+   @@@               @@@ @@@@
+   @@@              @@@  @@@@
+   @@@             @@@@ @@@@
+   @@@            @@@@ @@@@@
+   @@@         @@@@@  @@@@@
+   @@@  @@@@@@@@    @@@@@@
+   @@@@@@@     @@@@@@@@@@@@@
+       @@@@@@@@@@@@@    @@@@@@
+ @@@@@@@@@@@@             @@@@@@@
+@@@@                          @@
+`)}Danspotnytool Nitro Sniper Bot ${logger.green(`${require('./package.json').version}`)}
+${logger.blue(`https://github.com/Danspotnytool/nitro-sniper`)}`);
+
+
+
 client.on('ready', async () => {
     logger.log(`Logged in as ${ logger.green(`${client.user.tag}`) }`);
 });
