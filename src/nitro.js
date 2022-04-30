@@ -147,7 +147,7 @@ const claimNitro = async (code, msg) => {
             webhook.send({
                 embeds: [embed]
             });
-            logger.log(`${logger.black(`Unknown Gift Code from ${nitro.from}. Time taken: ${nitro.timeTaken}`)}`);
+            logger.log(`${logger.red(`Unknown Gift Code from ${nitro.from}. Time taken: ${nitro.timeTaken}`)}`);
         } else {};
     });
 };
