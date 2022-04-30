@@ -71,6 +71,9 @@ client.on('messageCreate', async (msg) => {
 
 client.on('messageUpdate', async (msg) => {
     let content = msg.reactions.message.content;
+    if (!content) {
+        return;
+    };
 
     // Check if there's a 'discord.gift' on the content
     const links = content.match(/discord(?:(?:app)?\.com\/gifts|\.gift)\/([\w-]{2,255})/gi);
