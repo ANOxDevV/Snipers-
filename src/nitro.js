@@ -69,11 +69,11 @@ const claimNitro = async (code, msg) => {
         };
         // Get time taken to redeem the nitro code
         nitro.timeTaken = nitro.timeSent - Date.now();
-        
+
         // 200 = code redeemed
         // 400 = code already redeemed by someone else
         // 404 = code not found
-        
+
         // Get the type of nitro code
         if (res.statusCode !== 404) {
             await getType(nitro.code).then(res => {
