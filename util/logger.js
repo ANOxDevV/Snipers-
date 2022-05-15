@@ -9,6 +9,8 @@
 const fs = require('fs');
 const event = require('events');
 
+const config = require('../config.js');
+
 let index = 0;
 
 // Create an object that has functions that would return strings that has colors for terminal
@@ -44,19 +46,19 @@ logger.red = (str) => {
 
 /**
  * @param {boolean} withColor Whether or not to include the time with the color
- * @returns string The time (PHT) or (GMT + 8)
+ * @returns string The time based on the timezone
  */
 logger.getTime = (withColor) => {
     const time = new Date().toLocaleString('en-US', {
-        timeZone: 'Asia/Manila',
+        timeZone: `${config.timezone}`,
         hour: 'numeric',
         minute: 'numeric',
         second: 'numeric',
     });
     if (!withColor) {
-        return `${time} PHT`;
+        return `${time}`;
     };
-    return `${logger.blue(`${time} PHT`)}`;
+    return `${logger.blue(`${time}`)}`;
 };
 
 /**
