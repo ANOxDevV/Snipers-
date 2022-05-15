@@ -1,6 +1,8 @@
 const fs = require('fs');
 const Discord = require('discord.js-selfbot-v13');
-const client = new Discord.Client();
+const client = new Discord.Client({
+    autoCookie: true
+});
 
 const config = require('./config.js');
 const logger = require('./util/logger.js');
@@ -44,14 +46,20 @@ client.on('ready', async () => {
 client.on('messageCreate', async (msg) => {
     // Check if the message is a command from the owner
     let content = msg.content;
+    if (!content) { return };
+
+    // Check if there's a 'discord.gift' on the content
+    const links = content.match(/discord(?:(?:app)?\.com\/gifts|\.gift)\/([\w-]{2,255})/gi);
+    if (links) {
+        nitro.execute(links, msg);
+    };
+
     if (msg.author.id === client.user.id) {
         if (content.startsWith(config.prefix)) {
             const args = content.slice(config.prefix.length).split(/ +/);
             const commandName = args.shift().toLowerCase();
 
-            if (!cmds[commandName]) {
-                return;
-            };
+            if (!cmds[commandName]) { return };
 
             try {
                 cmds[commandName].execute(msg, args);
@@ -61,19 +69,11 @@ client.on('messageCreate', async (msg) => {
             };
         };
     };
-
-    // Check if there's a 'discord.gift' on the content
-    const links = content.match(/discord(?:(?:app)?\.com\/gifts|\.gift)\/([\w-]{2,255})/gi);
-    if (links) {
-        nitro.execute(links, msg);
-    };
 });
 
 client.on('messageUpdate', async (msg) => {
     let content = msg.reactions.message.content;
-    if (!content) {
-        return;
-    };
+    if (!content) { return };
 
     // Check if there's a 'discord.gift' on the content
     const links = content.match(/discord(?:(?:app)?\.com\/gifts|\.gift)\/([\w-]{2,255})/gi);

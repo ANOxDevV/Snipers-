@@ -48,7 +48,7 @@ const claimNitro = async (code, msg) => {
         parse: 'json',
         headers: {
             'Authorization': `${config.token}`,
-            'User-Agent': `${config.userAgent}`
+            'User-Agent': `${msg.client.options.http.headers['User-Agent']}`
         },
         data: JSON.stringify({
             channel_id: `${msg.channel.id}`
