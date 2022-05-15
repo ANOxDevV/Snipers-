@@ -44,7 +44,7 @@ client.on('ready', async () => {
     logger.log(`Logged in as ${ logger.green(`${client.user.tag}`) }`);
 
     // Set the user's status
-    client.user.setActivity({
+    client.setting.setCustomStatus({
         status: `${config.setStatus}`,
         text: `${config.customStatus.text}`,
         emoji: `${config.customStatus.unicodeEmoji}`,
