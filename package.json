@@ -1,6 +1,6 @@
 {
     "name": "nitro-sniper",
-    "version": "0.4.0",
+    "version": "0.4.2",
     "description": "Discord Nitro Sniper Using discord.js-selfbot-v13",
     "main": "index.js",
     "scripts": {

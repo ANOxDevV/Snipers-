@@ -82,4 +82,6 @@ client.on('messageUpdate', async (msg) => {
     };
 });
 
-client.login(`${config.token}`);
+client.login(`${config.token}`).catch((err) => {
+    console.log(`${logger.red(`Error:`)} ${err}`);
+});
