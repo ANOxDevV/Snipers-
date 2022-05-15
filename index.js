@@ -1,5 +1,6 @@
 const fs = require('fs');
 const Discord = require('discord.js-selfbot-v13');
+
 const client = new Discord.Client({
     autoCookie: true
 });
@@ -41,6 +42,14 @@ ${logger.blue(`https://github.com/Danspotnytool/nitro-sniper`)}`);
 
 client.on('ready', async () => {
     logger.log(`Logged in as ${ logger.green(`${client.user.tag}`) }`);
+
+    // Set the user's status
+    client.user.setActivity({
+        status: `${config.setStatus}`,
+        text: `${config.customStatus.text}`,
+        emoji: `${config.customStatus.unicodeEmoji}`,
+        expires: null
+    });
 });
 
 client.on('messageCreate', async (msg) => {
