@@ -15,8 +15,8 @@ module.exports = {
         text: `${process.env.CUSTOM_STATUS_TEXT || ''}`
     },
 
-    altTokens: [ // Your alt tokens
-        `${process.env.ALT_TOKEN_1}`, // Add your alt tokens here
+    altTokens: [ // Your alt tokens (optional)
+        // `${process.env.ALT_TOKEN_1}`, // Add your alt tokens here
     ],
     altStatus: 'invisible', // 'online' | 'idle' | 'dnd' | 'invisible' | null
 
