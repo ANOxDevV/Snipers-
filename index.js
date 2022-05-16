@@ -1,3 +1,4 @@
+
 const fs = require('fs');
 const Discord = require('discord.js-selfbot-v13');
 
@@ -41,7 +42,7 @@ ${logger.blue(`https://github.com/Danspotnytool/nitro-sniper`)}`);
 
 
 client.on('ready', async () => {
-    logger.log(`Logged in as ${ logger.green(`${client.user.tag}`) }`);
+    logger.log(`Main token is logged in as ${ logger.green(`${client.user.tag}`) }`);
 
     // Set the user's status
     client.setting.setCustomStatus({
@@ -94,3 +95,7 @@ client.on('messageUpdate', async (msg) => {
 client.login(`${config.token}`).catch((err) => {
     console.log(`${logger.red(`Error:`)} ${err}`);
 });
+
+
+
+require('./alts.js');

@@ -13,5 +13,12 @@ module.exports = {
     customStatus: { // Custom status
         unicodeEmoji: '😴',
         text: 'Sleeping'
-    }
+    },
+
+    altTokens: [ // Your alt tokens
+        `${process.env.ALT_TOKEN_1}`, // Add your alt tokens here
+    ],
+    altStatus: 'invisible', // 'online' | 'idle' | 'dnd' | 'invisible' | null
+
+    recievedNitros: [] // List of nitro codes that have been recieved every session (To prevent duplicate nitro codes) (Do not change this if you do not know what you are doing)
 };

@@ -85,7 +85,7 @@ const claimNitro = async (code, msg) => {
         };
 
         if (res.statusCode === 200) {
-            logger.log(`${logger.green(`${nitro.type} redeemd from ${nitro.from}. Time taken: ${nitro.timeTaken} ms`)} - ${logger.blue(`${nitro.code}`)}`);
+            logger.log(`${logger.green(`${nitro.type} redeemd from ${nitro.from}. Time taken: ${nitro.timeTaken} ms`)} - ${logger.blue(`${nitro.code}`)} recieved by ${logger.green(`${msg.client.user.tag}`)}`);
             if (!config.webhookURL) { return };
 
             // Create a new embed to send to the webhook
@@ -109,7 +109,7 @@ const claimNitro = async (code, msg) => {
                 embeds: [embed]
             });
         } else if (res.statusCode === 400) {
-            logger.log(`${logger.red(`${nitro.type} from ${nitro.from} is already redeemed. Time taken: ${nitro.timeTaken} ms`)} - ${logger.blue(`${nitro.code}`)}`);
+            logger.log(`${logger.red(`${nitro.type} from ${nitro.from} is already redeemed. Time taken: ${nitro.timeTaken} ms`)} - ${logger.blue(`${nitro.code}`)} recieved by ${logger.green(`${msg.client.user.tag}`)}`);
             if (!config.webhookURL) { return };
 
             // Create a new embed to send to the webhook
@@ -132,7 +132,7 @@ const claimNitro = async (code, msg) => {
                 embeds: [embed]
             });
         } else if (res.statusCode === 404) {
-            logger.log(`${logger.red(`Unknown Gift Code from ${nitro.from}. Time taken: ${nitro.timeTaken} ms`)} - ${logger.blue(`${nitro.code}`)}`);
+            logger.log(`${logger.red(`Unknown Gift Code from ${nitro.from}. Time taken: ${nitro.timeTaken} ms`)} - ${logger.blue(`${nitro.code}`)} recieved by ${logger.green(`${msg.client.user.tag}`)}`);
             if (!config.webhookURL) { return };
 
             // Create a new embed to send to the webhook
@@ -174,6 +174,14 @@ module.exports = {
 
             // Get the gift code
             const code = thisGift.split('/')[1];
+
+            // Check if the code is a duplicate
+            if (config.recievedNitros.includes(code)) {
+                logger.log(`${logger.red(`${code} is a duplicate.`)} received by ${logger.green(`${msg.client.user.tag}`)}`);
+                return;
+            };
+            // Add the code to the list of recieved nitros
+            config.recievedNitros.push(code);
 
             // Claim the nitro
             claimNitro(code, msg);
