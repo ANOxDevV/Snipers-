@@ -8,7 +8,7 @@ module.exports = {
 
     timezone: `${process.env.TIMEZONE || 'America/New_York'}`, // Your preferred timezone
 
-    setStatus: 'idle',  // 'online' | 'idle' | 'dnd' | 'invisible' | null
+    setStatus: 'online',  // 'online' | 'idle' | 'dnd' | 'invisible' | null
     setCustomStatus: true, // Set user's custom status
     customStatus: { // Custom status (optional)
         unicodeEmoji: `${process.env.CUSTOM_STATUS_EMOJI || ''}`,
