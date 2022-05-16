@@ -10,9 +10,9 @@ module.exports = {
 
     setStatus: 'idle',  // 'online' | 'idle' | 'dnd' | 'invisible' | null
     setCustomStatus: true, // Set user's custom status
-    customStatus: { // Custom status
-        unicodeEmoji: '😴',
-        text: 'Sleeping'
+    customStatus: { // Custom status (optional)
+        unicodeEmoji: `${process.env.CUSTOM_STATUS_EMOJI || ''}`,
+        text: `${process.env.CUSTOM_STATUS_TEXT || ''}`
     },
 
     altTokens: [ // Your alt tokens
